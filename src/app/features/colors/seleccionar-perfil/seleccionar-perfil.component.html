@@ -1,0 +1,16 @@
+<div cdkDrag cdkDragRootElement=".cdk-overlay-pane">
+  <h1 mat-dialog-title cdkDragHandle>Seleccione un perfil</h1>
+  <div mat-dialog-content class="h-100">
+    <mat-form-field appearance="fill">
+      <mat-label>Seleccione perfil</mat-label>
+      <mat-select [(ngModel)]="selectedValue">
+        <mat-option *ngFor="let profile of profiles" [value]="profile.id">
+          {{profile.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions align="end" class="mb-0 pb-0">
+    <button mat-raised-button color="primary" [mat-dialog-close]="selectedValue" [disabled]="!selectedValue">Accept</button>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div cdkDrag cdkDragRootElement=".cdk-overlay-pane">
+  <h1 mat-dialog-title cdkDragHandle>Confirm</h1>
+  <div mat-dialog-content class="h-100">
+    Desea eliminar el color {{ data.Name }} ?
+  </div>
+  <div mat-dialog-actions align="end" class="mb-0 pb-0">
+    <button mat-raised-button color="warn" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">Accept</button>
+  </div>
+</div>

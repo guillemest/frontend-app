@@ -1,0 +1,56 @@
+<mat-card class="h-100">
+
+  <h1 class="text-center font-weight-bold">Colores</h1>
+
+  <mat-card-content>
+    <div class="col-12 justify-content-end d-flex" *ngIf="mostrarBotonCrear === true">
+      <button mat-button mat-raised-button color="primary" (click)="newColor()">Nuevo
+      </button>
+    </div>
+
+    <div class="container-fluid mt-3">
+      <div class="row">
+        <ng-container *ngFor="let color of data ? data.result : []">
+          <div class="col-12 col-sm-5 col-md-4 col-lg-3 col-xl-2 border-2 rounded mb-1 mr-1 ml-1"
+            [ngStyle]="{'background-color': color.Color}">
+            <div class="text-left">
+              {{ color.Year}}
+            </div>
+            <div class="text-center my-auto">
+              {{ color.Name}} <br>
+              {{ color.Color}}
+            </div>
+            <div class="text-right">
+              {{ color.Pantone}}
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <div class="row mt-3" *ngIf="data.result && data.result.length > 0">
+        <div class="col-4 text-left">
+          <button mat-raised-button color="primary" [disabled]="data.currentPage === 1" (click)="pagAnt()">
+            <mat-icon>navigate_before</mat-icon>Anterior
+          </button>
+        </div>
+
+
+        <div class="col-4 text-center">
+          <mat-form-field class="col-sm-6 col-md-6 col-lg-6 col-xl-6" appearance="fill">
+            <mat-label>Items por página</mat-label>
+            <input class="text-right" matInput appNumberInput [formControl]="itemsPorPagina" autocomplete="off" (click)="pagAnt()"/>
+          </mat-form-field>
+          <div>Página {{ data.currentPage }} de {{ data.pages }}</div>
+        </div>
+
+        <div class="col-4 text-right">
+          <button mat-raised-button color="primary" [disabled]="data.currentPage === data.pages" (click)="pagSig()">
+            Siguiente <mat-icon>navigate_next</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+

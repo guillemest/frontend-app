@@ -1,0 +1,42 @@
+<mat-card class="m-auto h-100">
+  <mat-card-header>
+    <mat-card-title>{{action }} color </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <form [formGroup]="form">
+
+      <div class="row">
+        <mat-form-field class="col-sm-3 col-md-6 col-lg-3 col-xl-2 " appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="Name" autocomplete="off" />
+        </mat-form-field>
+
+        <mat-form-field class="col-sm-3 col-md-6 col-lg-3 col-xl-2 " appearance="fill">
+          <mat-label>Color</mat-label>
+          <input [(colorPicker)]="inputColor" [style.background]="inputColor" [value]="inputColor" matInput
+            formControlName="Color" autocomplete="off" (blur)=setColor($event) />
+        </mat-form-field>
+
+        <mat-form-field class="col-sm-3 col-md-6 col-lg-3 col-xl-2 " appearance="fill">
+          <mat-label>Pantone</mat-label>
+          <input matInput formControlName="Pantone" autocomplete="off" />
+        </mat-form-field>
+
+
+        <mat-form-field class="col-sm-3 col-md-6 col-lg-3 col-xl-2" appearance="fill">
+          <mat-label>Año</mat-label>
+          <input matInput appNumberInput formControlName="Year" autocomplete="off" />
+        </mat-form-field>
+
+      </div>
+    </form>
+
+  </mat-card-content>
+  <mat-card-actions class="d-flex justify-content-end">
+    <button mat-raised-button color="warn" (click)="goBack()">Cancelar</button>
+    <button mat-button mat-raised-button color="primary" (click)="save()" [disabled]="form.pristine || form.invalid">
+      Guardar
+    </button>
+  </mat-card-actions>
+</mat-card>
